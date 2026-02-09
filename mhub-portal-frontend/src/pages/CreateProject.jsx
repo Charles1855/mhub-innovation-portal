@@ -31,20 +31,20 @@ export default function CreateProject() {
 
   return (
     <>
-      <Navbar />
-      <div style={{
-        display:"flex", flexDirection:"column", alignItems:"center",
-        justifyContent:"center", minHeight:"100vh", paddingTop:"60px"
-      }}>
-        <h2>Submit Your Project</h2>
-        <p>Enter your project details and your phone so we can contact you.</p>
-        <form onSubmit={submitProject} style={{ display:"flex", flexDirection:"column", width:"400px" }}>
-          <input placeholder="Project Title" value={title} onChange={e=>setTitle(e.target.value)} required/>
-          <textarea placeholder="Description" value={description} onChange={e=>setDescription(e.target.value)} required/>
-          <input placeholder="Phone Number" value={phone} onChange={e=>setPhone(e.target.value)} required/>
-          <input type="file" onChange={e=>setFile(e.target.files[0])}/>
-          <button type="submit">Submit Project</button>
-        </form>
+      <div className="center-page">
+        <div className="card">
+          <h2>Submit Your Innovation</h2>
+          <p>Share your innovative ideas with mHub and contribute to the ecosystem.</p>
+
+          <form onSubmit={submitProject}>
+            <input placeholder="Project Title" value={title} onChange={e => setTitle(e.target.value)} required />
+            <textarea placeholder="Project Description" value={description} onChange={e => setDescription(e.target.value)} required />
+            <input placeholder="Contact Phone" value={phone} onChange={e => setPhone(e.target.value)} required />
+            <input type="file" onChange={e => setFile(e.target.files[0])} />
+
+            <button type="submit">Submit Project</button>
+          </form>
+        </div>
       </div>
     </>
   );

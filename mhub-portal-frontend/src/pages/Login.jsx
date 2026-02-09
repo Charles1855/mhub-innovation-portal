@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "../utils/axios";
-import { useNavigate } from "react-router-dom";
+import { Navigate,useNavigate } from "react-router-dom";
+import { isLoggedIn } from "../utils/auth"; 
 import { toast } from "react-toastify";
 
 export default function Login() {
@@ -26,26 +27,14 @@ export default function Login() {
   };
 
   return (
-    <div className="page">
-      <form className="card" onSubmit={submit}>
-        <h2>Welcome Back 👋</h2>
+    <div className="center-page" style={{background: "#a3ec70", height: "94vh"}}>
+      <div className="card">
+        <h2> Welcome Back</h2>
         <p>Log in to manage and submit innovation projects at mHub.</p>
-
-        <input
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-
-        <button>Login</button>
-      </form>
+        <input placeholder="Email" onChange={e => setEmail(e.target.value)}/>
+        <input placeholder="Password" type="password" onChange={e => setPassword(e.target.value)}/>
+        <button onClick={submit}>Login</button>
+      </div>
     </div>
   );
 }

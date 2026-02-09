@@ -18,9 +18,8 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <PageWrapper>
-      <div style={{ maxWidth: 900, margin: "auto" }}>
-        <h1>Welcome to mHub Innovation Portal 🚀</h1>
+      <div className="container">
+        <h1>Welcome to mHub Innovation Portal </h1>
         <p>
           This platform allows innovators to submit ideas, track progress,
           and collaborate with mHub administrators.
@@ -36,7 +35,7 @@ export default function Dashboard() {
           <div
             key={project.id}
             style={{
-              background: "#f5f5f5",
+              background: "#a3ec70",
               padding: 20,
               borderRadius: 6,
               marginBottom: 15,
@@ -48,6 +47,6 @@ export default function Dashboard() {
           </div>
         ))}
       </div>
-    </PageWrapper>
+
   );
 }

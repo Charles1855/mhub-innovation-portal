@@ -1,57 +1,44 @@
 import { useEffect, useState } from "react";
 import axios from "../utils/axios";
+import { toast } from "react-toastify";
 
 export default function Profile() {
-  const [user, setUser] = useState(null);
+  const user = JSON.parse(localStorage.getItem("user"));
 
-  useEffect(() => {
-    axios.get("/user")
-      .then(res => setUser(res.data))
-      .catch(() => {});
-  }, []);
-
-  if (!user) {
-    return <p style={{ textAlign: "center", marginTop: 80 }}>Loading profile...</p>;
-  }
-
+  const [name, setName] = useState(user.name);
+  const [email, setEmail] = useState(user.email);
+  const [phone, setPhone] = useState(user.phone || "");
+  const save = () => {
+    toast.success("Profile updated successfully");
+  };
   return (
-    <div style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      minHeight: "80vh"
-    }}>
-      <div style={{
-        width: 420,
-        padding: 30,
-        borderRadius: 10,
-        background: "#f9f9f9",
-        boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
-      }}>
-        <h2 style={{ marginBottom: 10 }}>👤 My Profile</h2>
-        <p style={{ color: "#555", marginBottom: 20 }}>
-          Manage and view your account information
+    <div className="center-page">
+      <div className="profile-card" style={{width:"420px", background: "#4d941a", padding: "30px", borderRadius: "8px"}}>
+        <h2 style={{textAlign: "center", marginBottom: "20px", color: "#fff"}}>My Profile</h2>
+        <p style={{textAlign: "center", color: "#fff", marginBottom: "30px"}}>
+          View and update your profile information. Keeping your contact details up to date helps us reach you about your innovation projects.  
         </p>
-
-        <div style={{ marginBottom: 10 }}>
-          <strong>Name:</strong>
-          <div>{user.name}</div>
-        </div>
-
-        <div style={{ marginBottom: 10 }}>
-          <strong>Email:</strong>
-          <div>{user.email}</div>
-        </div>
-
-        <div>
-          <strong>Role:</strong>
-          <div style={{
-            color: user.role === "admin" ? "#1b5e20" : "#333",
-            fontWeight: "bold"
-          }}>
-            {user.role}
+        <div className="profile-header">
+          <div>
+            <h2>{name}</h2>
+            <div className="profile-role">
+              {user.role.toUpperCase()}
+            </div>
           </div>
         </div>
+
+        <label>Full name</label>
+        <input value={user.name} onChange={e => setName(e.target.value)}/>
+
+        <label>Email</label>
+        <input value={user.email} disabled />
+
+        <label>Phone</label>
+        <input placeholder="Enter Phone number"
+         value={phone}
+         onChange={e => setPhone(e.target.value)}/>
+
+         <button onClick={save}>Update Profile</button>
       </div>
     </div>
   );

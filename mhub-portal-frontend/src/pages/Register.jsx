@@ -27,17 +27,17 @@ export default function Register() {
   };
 
   return (
-    <div className="page">
-      <form className="card" onSubmit={submit}>
-        <h2>Create Account 🚀</h2>
+    <div className="center-page">
+      <div className="card" onSubmit={submit}>
+        <h2>Create Account </h2>
         <p>Join mHub and submit your innovation projects.</p>
 
         <input placeholder="Full Name" onChange={(e) => setName(e.target.value)} required />
         <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
         <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required />
 
-        <button>Register</button>
-      </form>
+        <button onClick={submit}>Register</button>
+      </div>
     </div>
   );
 }

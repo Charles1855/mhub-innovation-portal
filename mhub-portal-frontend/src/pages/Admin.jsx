@@ -47,45 +47,36 @@ export default function Admin() {
   if (loading) return <p style={{ textAlign: "center", marginTop: "50px" }}>Loading projects...</p>;
 
   return (
-    <>
-      <Navbar />
-      <div style={{ minHeight: "100vh", padding: "80px 50px", background: "#f0f0f0" }}>
-        <h1 style={{ textAlign: "center", marginBottom: "30px" }}>Admin Dashboard – All Submitted Projects</h1>
+    <div className="container">
+      <h1>Admin Dashboard</h1>
+      <p>Review and manage submitted innovation projects.</p>
 
-        {projects.length === 0 ? (
-          <p style={{ textAlign: "center" }}>No projects submitted yet.</p>
-        ) : (
-          <table style={{ width: "100%", borderCollapse: "collapse", background: "white" }}>
-            <thead>
-              <tr>
-                <th style={thStyle}>User</th>
-                <th style={thStyle}>Title</th>
-                <th style={thStyle}>Description</th>
-                <th style={thStyle}>Phone</th>
-                <th style={thStyle}>Status</th>
-                <th style={thStyle}>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {projects.map((project) => (
-                <tr key={project.id}>
-                  <td style={tdStyle}>{project.user?.name}</td>
-                  <td style={tdStyle}>{project.title}</td>
-                  <td style={tdStyle}>{project.description}</td>
-                  <td style={tdStyle}>{project.phone}</td>
-                  <td style={tdStyle}>{project.status}</td>
-                  <td style={tdStyle}>
-                    <button onClick={() => approveProject(project.id)} style={buttonStyleApprove}>Approve</button>
-                    <button onClick={() => rejectProject(project.id)} style={buttonStyleReject}>Reject</button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Contact</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>  
+        <tbody>
+          {projects.map((project) => (
+            <tr key={project.id}>
+              <td>{project.title}</td>
+              <td>{project.description}</td>
+              <td>{project.phone}</td>
+              <td>{project.status}</td>
+              <td>
+                <button onClick={() => approveProject(project.id)} style={buttonStyleApprove}>Approve</button>
+                <button onClick={() => rejectProject(project.id)} style={buttonStyleReject}>Reject</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       </div>
-    </>
   );
 }
 

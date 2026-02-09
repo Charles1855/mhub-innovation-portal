@@ -17,7 +17,7 @@ export default function Navbar() {
       top: 0,
       width: "100%",
       height: "60px",
-      backgroundColor: "#1b5e20",
+      backgroundColor: "#000000",
       color: "white",
       display: "flex",
       justifyContent: "space-between",
@@ -25,12 +25,12 @@ export default function Navbar() {
       padding: "0 30px",
       zIndex: 1000
     }}>
-      <strong>mHub Portal</strong>
+      <strong style={{color: "#21ba19"}}>mHub Portal</strong>
       <div>
         {!loggedIn && (
           <>
-            <Link to="/login" style={{ color: "white", marginRight: 15 }}>Login</Link>
-            <Link to="/register" style={{ color: "white" }}>Register</Link>
+            <Link to="/login" style={{ color: "#21ba19", marginRight: 15 }}>Login</Link>
+            <Link to="/register" style={{ color: "#21ba19" }}>Register</Link>
           </>
         )}
 

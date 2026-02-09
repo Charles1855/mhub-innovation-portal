@@ -1,0 +1,29 @@
+.profile-card{
+    max-width: 500px;
+    margin: auto;
+}
+
+.profile-header{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.profile-avatar{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #2d8933;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.profile-role{
+    font-size: 13px;
+    color: #ff0000;
+}
